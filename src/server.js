@@ -36,8 +36,8 @@ const limiter = rateLimit({
   }
 });
 
-// Apply rate limiting to auth routes
-app.use('/auth', limiter);
+// Apply rate limiting to /api/auth routes
+app.use('/api/auth', limiter);
 
 // CORS configuration
 app.use(cors({
@@ -53,8 +53,8 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files (uploaded images)
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Routes
-app.use('/auth', authRoutes);
+// Mount auth routes under /api/auth
+app.use('/api/auth', authRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {
